@@ -31,6 +31,6 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'Sources/Modify/Modify.swift'
+  s.source_files = 'Sources/Modify/**/*'
 
 end
