@@ -3,7 +3,7 @@ import XCTest
 
 final class ModifyTests: XCTestCase {
     
-    class Person: Modifiable {
+    class Person: Modify {
         var name: String
         var age: Int
         init(_ name: String, age: Int) {
@@ -18,17 +18,21 @@ final class ModifyTests: XCTestCase {
     
     func testExample() {
         let p = Person("Allen", age: 24)
-            .modified(30, for: \.age)
-        XCTAssertEqual(p.age, 30)
-        let a = Adult("Allen", age: 24)
-            .modified(30, for: \.age)
-        XCTAssertEqual(a.age, 30)
-        let btn = UIButton()
-            .tagged(2)
-            .alpha(0.5)
-            .frame(CGRect(x: 0, y: 0, width: 100, height: 50))
-            .clipsToBounds(true)
-        XCTAssertEqual(btn.tag, 2)
+            .modify(\.age, to: 25)
+            .modify {
+                $0.name = "Iverson"
+            }
+        XCTAssert(p.age == 25)
+        XCTAssert(p.name == "Iverson")
+        let a = Adult("Allen", age: 25)
+            .modify(\.age, to: 26)
+            .modify(\.prefession, to: "Developer")
+            .modify {
+                $0.name = "Iverson"
+            }
+        XCTAssert(a.age == 26)
+        XCTAssert(a.prefession == "Developer")
+        XCTAssert(a.name == "Iverson")
     }
 
     static var allTests = [

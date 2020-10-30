@@ -1,5 +1,11 @@
 
 import Foundation
+#if !os(Linux)
+  import CoreGraphics
+#endif
+#if os(iOS) || os(tvOS)
+  import UIKit.UIGeometry
+#endif
 
 public protocol Modify { }
 
@@ -97,10 +103,10 @@ public extension Modify where Self: Any {
 extension NSObject: Modify { }
 
 #if !os(Linux)
-  extension CGPoint: Modify { }
-  extension CGRect: Modify { }
-  extension CGSize: Modify { }
-  extension CGVector: Modify { }
+extension CGPoint: Modify { }
+extension CGRect: Modify { }
+extension CGSize: Modify { }
+extension CGVector: Modify { }
 #endif
 
 extension String: Modify { }
@@ -109,7 +115,7 @@ extension Dictionary: Modify { }
 extension Set: Modify { }
 
 #if os(iOS) || os(tvOS)
-  extension UIEdgeInsets: Modify { }
-  extension UIOffset: Modify { }
-  extension UIRectEdge: Modify { }
+extension UIEdgeInsets: Modify { }
+extension UIOffset: Modify { }
+extension UIRectEdge: Modify { }
 #endif
