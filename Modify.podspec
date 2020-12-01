@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Modify'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'A delightful framework to make your codes chainable.'
 
 # This description is used to generate tags and improve search results.
@@ -30,6 +30,7 @@ Pod::Spec.new do |s|
   s.swift_versions = '5.0'
 
   s.ios.deployment_target = '10.0'
+  s.osx.deployment_target = '10.12'
 
   s.source_files = 'Sources/Modify/**/*'
 
